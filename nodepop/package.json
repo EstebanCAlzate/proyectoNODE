@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www ",
-    "build": "mongo ./install_db.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "node ./install_db.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",

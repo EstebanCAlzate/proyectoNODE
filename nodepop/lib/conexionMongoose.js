@@ -20,4 +20,4 @@ conn.once('open', ()=>{
 
 //realizamos la conexion. No es necesario exportar la conexion ya que mongoose la gestiona por nosotros
 
-mongoose.connect('mongodb://localhost/cursonode');
+mongoose.connect('mongodb://localhost/nodepop');

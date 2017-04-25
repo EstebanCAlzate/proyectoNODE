@@ -7,10 +7,10 @@ const moongose = require('mongoose');
 const usuarioSchema = moongose.Schema({
     name: String,
     email: String,
-    contraseña: String
+    passwd: String
 }); 
 
 
 
 
-moongose.model ('Usuario', usuarioSchema);
+moongose.model('Usuario', usuarioSchema);
