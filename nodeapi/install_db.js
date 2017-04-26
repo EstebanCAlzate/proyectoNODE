@@ -2,26 +2,37 @@
 
 
 const  mongoose = require('mongoose');
+
+require('./models/Anuncio');
 require('./models/Usuario');
+
 //le pedimos a mongoose el model del agente
+const Anuncio = mongoose.model('Anuncio');
 const Usuario = mongoose.model('Usuario');
 
 mongoose.Promise = global.Promise;
 
 console.log('ok');
 
-const usuario = new Usuario({    
-    name: "frey",
-    email: "emialejemplo",
-    passwd: "contraseñaeje"
-});
+// Reading Synchrously 
+const fs = require("fs"); 
 
-usuario.save((err, usuarioCreado)=>{    
-    if (err) {
-        console.log('ERROR DE CARGAR');
-        return;
-    }    
-    console.log('Usuario ' + usuarioCreado.name + ' creado'); 
-});
+console.log("\n *STARTING* \n"); 
+fs.readFile("datos.json",(err,data)=>{
+    if(err) return;
+    const obj = JSON.parse(data);
+    console.log(obj);
 
-//db.nodepop.insert({name:'ramsy',email:'ejmplo4',contraseña:'psswd4'})
+    const usuario = new Usuario(obj);
+    usuario.save((err, usuarioCreado)=>{    
+        console.log('save');
+            if (err) {
+                console.log('ERROR DE CARGAR');
+                return;
+            }    
+            console.log('Usuario ' + usarioCreado.name + ' creado'); 
+    });
+}); 
+
+
+console.log('ok');

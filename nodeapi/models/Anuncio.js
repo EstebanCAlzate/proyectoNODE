@@ -17,4 +17,4 @@ const anuncioSchema = moongose.Schema({
     }
 }); 
 
-moongose.model ('anuncio', anuncioSchema);
+var Anuncio = moongose.model ('Anuncio', anuncioSchema);

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "SET DEBUG=nodeapi:* & npm start",
-    "install": "node ./install_bd"
+    "install": "node ./install_db"
   },
   "dependencies": {
     "basic-auth": "^1.1.0",
