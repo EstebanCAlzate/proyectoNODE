@@ -10,11 +10,24 @@ const anuncioSchema = moongose.Schema({
     venta: Boolean,
     foto: String,
     tags: {
-        work: Boolean,
-        lifestyle: Boolean,
-        motor: Boolean,
-        mobile: Boolean 
+        type: [String],
+        enum: ["work","lifestyle","motor","mobile"]
     }
 }); 
 
-moongose.model ('Anuncio', anuncioSchema);
+anuncioSchema.statics.list = function(criterios,callback) {
+  const query = Anuncio.find(criterios,{_if:false});
+  
+  /*/ añado limites
+  query.limit(limit);
+  query.skip(skip);
+  query.select(select);
+  query.sort(sort);
+  */
+
+  // ejecuto la query
+  query.exec(callback);
+}
+
+
+var Anuncio = moongose.model ('Anuncio', anuncioSchema);

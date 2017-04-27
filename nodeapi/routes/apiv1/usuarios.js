@@ -6,13 +6,19 @@ const  router = express.Router();
 const  mongoose = require('mongoose');
 const Usuario = mongoose.model('Usuario');
 
+//hash
+var hash = require('../../node_modules/hash.js/lib/hash.js');
+
 //auth JWT  
 const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 //POST /apiv1/usuarios/--------- REGISTRO
 router.post('/', function(req, res, next){
+
 //recogemos los datos y creamos el objeto
+
+    req.body.passwd = hash.sha256().update(req.body.passwd).digest('hex');
     const datosUsuario = req.body;
     const usuario = new Usuario (datosUsuario);
 
@@ -43,7 +49,7 @@ router.post('/login',(req,res,next)=>{
             return;
         }
         //si exist comprobamos su passwd
-        if(passwd!== usuario.passwd){
+        if( hash.sha256().update(passwd).digest('hex')!== usuario.passwd){
             res.json({ success:false, error:'credenciales incorrectas' });
             return;
         }

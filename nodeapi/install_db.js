@@ -2,6 +2,8 @@
 
 require('./models/Anuncio');
 require('./models/Usuario');
+//hash
+var hash = require('./node_modules/hash.js/lib/hash.js');
 
 //require('./lib/connectMongoose');
 const  mongoose = require('mongoose');
@@ -24,12 +26,13 @@ conn.once('open', () => {
             for(var i=0;i<5; i++){
                 if(i===0){
                     const usuario = new Usuario(obj[0]);
+                    usuario.passwd = hash.sha256().update(usuario.passwd).digest('hex');
                     usuario.save((err, usuarioCreado)=>{    
                         if (err) {
                             console.log('ERROR DE CARGAR');
                             return;
                         }    
-                        console.log('Usuario ' + usuarioCreado.name + ' creado');
+                        console.log('Usuario ' + usuarioCreado.name + ' creado con contrseña ' + usuarioCreado.passwd);
                         conn.close(); 
                     });
                 }else {
@@ -43,8 +46,7 @@ conn.once('open', () => {
                     });
                 }    
             }
-            console.log('finalFOr');
-        });//promesa
+        });
 });
 
 mongoose.connect('mongodb://localhost/nodepop');
