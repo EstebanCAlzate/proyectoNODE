@@ -10,7 +10,7 @@ const Usuario = mongoose.model('Usuario');
 const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
-//POST /api1/usuario/--------- REGISTRO
+//POST /apiv1/usuarios/--------- REGISTRO
 router.post('/', function(req, res, next){
 //recogemos los datos y creamos el objeto
     const datosUsuario = req.body;
@@ -25,7 +25,7 @@ router.post('/', function(req, res, next){
     });
 });
 
-//POST /api1/usuario/login ----- AUTENTICACION
+//POST /apiv1/usuarios/login ----- AUTENTICACION
 router.post('/login',(req,res,next)=>{
     //recibimos credenciales
     const email = req.body.email;

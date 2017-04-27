@@ -8,6 +8,7 @@
     "install": "node ./install_db"
   },
   "dependencies": {
+    "async-kit": "^2.2.3",
     "basic-auth": "^1.1.0",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",

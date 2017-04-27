@@ -1,5 +1,55 @@
-{
-    "name": "tyrion",
-    "email": "email@tyrion",
-    "passwd": "paswrd"
-}
+[
+    {
+        "name": "tyrion",
+        "email": "email@tyrion",
+        "passwd": "paswrd"
+    } ,
+    {   
+        "name": "sword",
+        "precio": 50,
+        "venta": false,
+        "foto": "sword.jpg",
+        "tags": {
+            "work":true,
+            "lifestyle":true,
+            "motor":true,
+            "mobile":true
+        }
+    },
+    {   
+        "name": "spear",
+        "precio": 75,
+        "venta": true,
+        "foto": "spear.jpg",
+        "tags": {
+            "work":true,
+            "lifestyle":false,
+            "motor":false,
+            "mobile":true
+        }
+    },
+    {   
+        "name": "shield",
+        "precio": 100,
+        "venta": false,
+        "foto": "shield.jpg",
+        "tags": {
+            "work":false,
+            "lifestyle":true,
+            "motor":false,
+            "mobile":true
+        }
+    },
+    {   
+        "name": "axe",
+        "precio": 150,
+        "venta": true,
+        "foto": "axe.jpg",
+        "tags": {
+            "work":false,
+            "lifestyle":true,
+            "motor":true,
+            "mobile":false
+        }
+    }
+]

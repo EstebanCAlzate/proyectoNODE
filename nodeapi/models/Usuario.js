@@ -10,7 +10,4 @@ const usuarioSchema = moongose.Schema({
     passwd: String
 }); 
 
-
-
-
 var Usuario = moongose.model('Usuario', usuarioSchema);

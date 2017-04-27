@@ -1,0 +1,50 @@
+
+    if(name){
+        Anuncio.find({ name:{$regex:name}}, {_id:false},(err, anuncios)=>{
+            if(err){
+                next(err); 
+                return;
+            }
+       res.json({ success: true, result: anuncios });
+        });
+    }
+
+    if(venta){
+        criterios.venta = venta;
+    }
+
+
+
+router.get('/',(req, res, next)=>{ //anidamos los midleware
+
+
+    console.log('ID DE USUARIO',req.usuario_id);
+    //recogemos parametros de busqueda
+    //todos los datos que vienen de body o query o params son STRINGS
+    const name = req.query.name;    
+    const age = req.query.age;
+    const limit = parseInt( req.query.limit );
+    const skip = parseInt ( req.query.skip );
+    const select = req.query.select;
+    const sort = req.query.sort;
+
+    const criterios = {};
+
+    if (name){
+        criterios.name = name;
+    }
+    if (age){
+        criterios.age = age;
+    } 
+
+
+//recupermos agentes
+   Agente.list(criterios,limit,skip,select,sort,(err, agentes)=>{
+       if(err){
+           next(err); // express se ocupa del error
+           return;
+       }
+       //tratar que todas las respuestas de la api tengan el mismo formato
+       res.json({ success: true, result: agentes });
+   });
+});
